@@ -7,7 +7,6 @@ const stats = document.getElementById('stats');
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 let currentFilter = 'all';
 
-// ---------- helpers ----------
 const save = () => {
   localStorage.setItem('todos', JSON.stringify(todos));
 };
@@ -23,7 +22,6 @@ const updateStats = () => {
   stats.textContent = `${done} / ${todos.length} completed`;
 };
 
-// ---------- render ----------
 const render = () => {
   list.innerHTML = '';
 
@@ -48,7 +46,6 @@ const render = () => {
   updateStats();
 };
 
-// ---------- events ----------
 addBtn.addEventListener('click', () => {
   const text = input.value.trim();
   if (!text) return;
@@ -68,7 +65,6 @@ input.addEventListener('keydown', e => {
   if (e.key === 'Enter') addBtn.click();
 });
 
-// 🔥 event delegation
 list.addEventListener('click', e => {
   const btn = e.target;
   const li = btn.closest('li');
@@ -89,7 +85,6 @@ list.addEventListener('click', e => {
   render();
 });
 
-// filters
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
